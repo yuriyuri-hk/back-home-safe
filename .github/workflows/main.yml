@@ -1,0 +1,17 @@
+image: node:latest
+
+pages:
+  cache:
+    paths:
+      - node_modules/
+
+  script:
+    - npm ci
+    - npm run build
+    - rm -rf ./public
+    - mv ./build ./public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
